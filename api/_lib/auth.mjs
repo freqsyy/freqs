@@ -90,4 +90,32 @@ export async function changePassword(userId, oldPassword, newPassword) {
   return changeUserPassword(userId, oldPassword, newPassword);
 }
 
+// --- Хендлеры эндпоинтов (именованные, чтобы каждый путь
+//     /api/auth/<x>.js имел свой файл — Vercel роутит точно по имени файла) ---
+import { json, readJson } from "./util.mjs";
+import { getUserByLogin } from "./users.mjs";
+
+export async function meHandler(req, res) {
+  const user = await getSession(req);
+  return json(res, 200, { user: user || null });
+}
+
+export async function loginHandler(req, res) {
+  const body = await readJson(req);
+  const login = String(body.login || "").trim();
+  const password = String(body.password || "");
+  const user = await getUserByLogin(login);
+  if (!user || !(await verifyUserPassword(password, user))) {
+    return json(res, 401, { error: "Неверный логин или пароль" });
+  }
+  await createSession(res, user.id);
+  const { hash, salt, ...safe } = user;
+  return json(res, 200, { ok: true, user: safe });
+}
+
+export async function logoutHandler(req, res) {
+  destroySession(res, req);
+  return json(res, 200, { ok: true });
+}
+
 export { COOKIE };

@@ -1,32 +1,14 @@
-import { json, readJson } from "./_lib/util.mjs";
-import { getSession, createSession, destroySession, verifyUserPassword } from "./_lib/auth.mjs";
-import { getUserByLogin } from "./_lib/users.mjs";
+import { json } from "./_lib/util.mjs";
+import { meHandler, loginHandler, logoutHandler } from "./_lib/auth.mjs";
 
+// /api/auth — делегирует по методу+подпути (для обратной совместимости).
+// Основные пути: /api/auth/me, /api/auth/login, /api/auth/logout (свои файлы).
 export default async function handler(req, res) {
   try {
-    if (req.method === "GET" && req.url.startsWith("/api/auth/me")) {
-      const user = await getSession(req);
-      return json(res, 200, { user: user || null });
-    }
-
-    if (req.method === "POST" && req.url.startsWith("/api/auth/login")) {
-      const body = await readJson(req);
-      const login = String(body.login || "").trim();
-      const password = String(body.password || "");
-      const user = await getUserByLogin(login);
-      if (!user || !(await verifyUserPassword(password, user))) {
-        return json(res, 401, { error: "Неверный логин или пароль" });
-      }
-      await createSession(res, user.id);
-      const { hash, salt, ...safe } = user;
-      return json(res, 200, { ok: true, user: safe });
-    }
-
-    if (req.method === "POST" && req.url.startsWith("/api/auth/logout")) {
-      destroySession(res, req);
-      return json(res, 200, { ok: true });
-    }
-
+    const url = req.url || "";
+    if (req.method === "GET" && url.includes("/auth/me")) return meHandler(req, res);
+    if (req.method === "POST" && url.includes("/auth/login")) return loginHandler(req, res);
+    if (req.method === "POST" && url.includes("/auth/logout")) return logoutHandler(req, res);
     return json(res, 405, { error: "Method not allowed" });
   } catch (e) {
     console.error("auth error", e);
