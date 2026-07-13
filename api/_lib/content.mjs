@@ -202,10 +202,17 @@ export function normalizeContent(input) {
 }
 
 export async function getContent() {
-  const stored = await kv.get(KEYS.content);
-  if (!stored) return DEFAULT_CONTENT;
-  // мержим с дефолтом, чтобы новые поля не ломали старый контент
-  return normalizeContent({ ...DEFAULT_CONTENT, ...stored });
+  try {
+    const stored = await kv.get(KEYS.content);
+    if (!stored) return DEFAULT_CONTENT;
+    // мержим с дефолтом, чтобы новые поля не ломали старый контент
+    return normalizeContent({ ...DEFAULT_CONTENT, ...stored });
+  } catch (e) {
+    // если KV недоступен/не настроен — отдаём дефолтный контент,
+    // чтобы сайт рендерился, а не падал с 500
+    console.error("getContent fallback to default:", e?.message);
+    return DEFAULT_CONTENT;
+  }
 }
 
 export async function saveContent(content) {
