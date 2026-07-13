@@ -2,7 +2,7 @@ import { json } from "./_lib/util.mjs";
 import { kv, KEYS } from "./_lib/kv.mjs";
 
 // ВРЕМЕННЫЙ одноразовый endpoint для сброса админки (стирает site:users в KV).
-// Удаляется сразу после использования. Токен — одноразовый, не свети его.
+// Удаляется сразу после использования. Токен — одноразовый.
 const RESET_TOKEN = "n0ct1s-r3set-9f3a7b";
 
 export default async function handler(req, res) {
