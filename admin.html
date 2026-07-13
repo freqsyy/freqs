@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOCTIS - админ-панель</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  </div>
+
+  <!-- ЭКРАН ВХОДА / SETUP -->
+  <div id="gate" class="admin-gate">
+    <div class="glass admin-card">
+      <div class="admin-brand">NOCTIS <span>admin</span></div>
+
+      <!-- Форма логина -->
+      <form id="loginForm" class="admin-form" hidden>
+        <h2>Вход в панель</h2>
+        <div class="field">
+          <label for="lLogin">Логин</label>
+          <input id="lLogin" name="login" type="text" placeholder="логин" autocomplete="username" required />
+        </div>
+        <div class="field">
+          <label for="lPass">Пароль</label>
+          <input id="lPass" name="password" type="password" placeholder="••••••" autocomplete="current-password" required />
+        </div>
+        <button class="btn btn-primary full" type="submit">Войти</button>
+        <a class="admin-back" href="/">← на сайт</a>
+      </form>
+
+      <!-- Форма первичной настройки -->
+      <form id="setupForm" class="admin-form" hidden>
+        <h2>Первый запуск</h2>
+        <p class="admin-hint">Создайте владельца сайта — у него будут все права, включая передачу владения.</p>
+        <div class="field">
+          <label for="sLogin">Логин владельца</label>
+          <input id="sLogin" name="login" type="text" placeholder="логин (от 3 символов)" required />
+        </div>
+        <div class="field">
+          <label for="sPass">Пароль</label>
+          <input id="sPass" name="password" type="password" placeholder="минимум 6 символов" required />
+        </div>
+        <button class="btn btn-primary full" type="submit">Создать владельца</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ПАНЕЛЬ -->
+  <div id="panel" class="admin-panel" hidden>
+    <aside class="admin-side glass">
+      <div class="admin-brand">NOCTIS <span>admin</span></div>
+      <nav class="admin-tabs">
+        <button class="tab active" data-tab="dashboard">Дашборд</button>
+        <button class="tab" data-tab="content">Контент</button>
+        <button class="tab" data-tab="users">Пользователи</button>
+        <button class="tab" data-tab="settings">Настройки</button>
+      </nav>
+      <div class="admin-side-foot">
+        <div id="meRole" class="me-role">…</div>
+        <button id="logoutBtn" class="btn btn-ghost small full">Выйти</button>
+        <a class="admin-back" href="/">← на сайт</a>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <!-- ДАШБОРД -->
+      <section class="tab-pane active" data-pane="dashboard">
+        <h1>Дашборд</h1>
+        <div id="dashStats" class="dash-grid"></div>
+        <p class="admin-hint" id="dashHint"></p>
+      </section>
+
+      <!-- КОНТЕНТ -->
+      <section class="tab-pane" data-pane="content">
+        <div class="pane-head">
+          <h1>Контент сайта</h1>
+          <div class="pane-actions">
+            <button id="reloadContent" class="btn btn-ghost small">Отменить</button>
+            <button id="saveContent" class="btn btn-primary small">Сохранить</button>
+          </div>
+        </div>
+        <div id="contentEditor" class="editor"></div>
+      </section>
+
+      <!-- ПОЛЬЗОВАТЕЛИ -->
+      <section class="tab-pane" data-pane="users">
+        <div class="pane-head">
+          <h1>Пользователи и права</h1>
+          <div class="pane-actions" id="userAddWrap" hidden>
+            <button id="addUserBtn" class="btn btn-primary small">+ новый админ</button>
+          </div>
+        </div>
+        <div id="usersTable" class="users-wrap"></div>
+      </section>
+
+      <!-- НАСТРОЙКИ -->
+      <section class="tab-pane" data-pane="settings">
+        <h1>Настройки</h1>
+        <div class="glass admin-card settings-card">
+          <h2>Смена пароля</h2>
+          <form id="pwForm" class="admin-form">
+            <div class="field">
+              <label for="pwOld">Текущий пароль</label>
+              <input id="pwOld" name="old" type="password" required />
+            </div>
+            <div class="field">
+              <label for="pwNew">Новый пароль</label>
+              <input id="pwNew" name="new" type="password" placeholder="минимум 6 символов" required />
+            </div>
+            <button class="btn btn-primary full" type="submit">Обновить пароль</button>
+          </form>
+          <hr class="admin-hr" />
+          <h2>О проекте</h2>
+          <p class="admin-hint">NOCTIS — сайт-портфолио студии. Хранение: Vercel KV. Максимум владельцев: 2.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOCTIS — цифровая студия: сайты и SMM для бизнеса</title>
+  <meta name="description" content="NOCTIS — делаем сайты и ведём SMM для бизнеса в фирменном стиле. Быстро, под ключ, макет через 48 часов." />
+  <meta name="theme-color" content="#efe7d6" />
+  <meta name="author" content="NOCTIS" />
+
+  <!-- Open Graph / соцсети -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NOCTIS — цифровая студия" />
+  <meta property="og:description" content="Сайты и SMM для бизнеса под ключ. Макет через 48 часов." />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NOCTIS — цифровая студия" />
+  <meta name="twitter:description" content="Сайты и SMM для бизнеса под ключ. Макет через 48 часов." />
+
+  <!-- Favicon (inline SVG) — янтарная монограмма на графите -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1a16'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' text-anchor='middle' fill='%23ffb02e'%3EN%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <!-- Микроразметка schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "NOCTIS",
+    "description": "Цифровая студия: сайты и SMM для бизнеса под ключ.",
+    "url": "https://noctis-studio-five.vercel.app/",
+    "areaServed": "BY",
+    "sameAs": ["https://t.me/Tolikbopo"],
+    "priceRange": "от 50 BYN",
+    "makesOffer": [
+      {"@type": "Offer", "name": "Сайты под ключ"},
+      {"@type": "Offer", "name": "SMM для бизнеса"},
+      {"@type": "Offer", "name": "Быстрый старт"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Кастомный курсор (только для мыши) -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Декоративный фон: печатная сетка + шум (вместо плавающих цветных пятен) -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span>NOCTIS</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Услуги</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#pricing">Цены</a>
+      <a href="#process">Как работаем</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a class="btn btn-ghost nav-cta" href="https://t.me/Tolikbopo" target="_blank" rel="noopener">Написать в TG</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="hero reveal">
+    <!-- Визуал-якорь: гигантская монограмма-контур в фоне -->
+    <div class="hero-anchor" aria-hidden="true">
+      <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" class="anchor-svg">
+        <defs>
+          <pattern id="hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="14" stroke="currentColor" stroke-width="2.2" />
+          </pattern>
+        </defs>
+        <text x="300" y="430" text-anchor="middle" class="anchor-letter" fill="url(#none)">N</text>
+        <text x="300" y="430" text-anchor="middle" class="anchor-letter-out" fill="url(#none)">N</text>
+      </svg>
+      <span class="hero-kicker-num">© 2026</span>
+    </div>
+
+    <div class="hero-inner" id="heroRoot"><!-- заполняется из API (main.js) --></div>
+
+    <a class="scroll-cue" href="#services" aria-label="Листайте вниз"><span></span></a>
+  </section>
+
+  <!-- Сигнатурная лента-бегущая строка -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>САЙТЫ ПОД КЛЮЧ</span><span class="dot">●</span>
+      <span>SMM ДЛЯ БИЗНЕСА</span><span class="dot">●</span>
+      <span>МАКЕТ ЧЕРЕЗ 48 ЧАСОВ</span><span class="dot">●</span>
+      <span>ФИРМЕННЫЙ СТИЛЬ</span><span class="dot">●</span>
+      <span>САЙТЫ ПОД КЛЮЧ</span><span class="dot">●</span>
+      <span>SMM ДЛЯ БИЗНЕСА</span><span class="dot">●</span>
+      <span>МАКЕТ ЧЕРЕЗ 48 ЧАСОВ</span><span class="dot">●</span>
+      <span>ФИРМЕННЫЙ СТИЛЬ</span><span class="dot">●</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" class="section reveal">
+    <div id="servicesRoot"></div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section reveal">
+    <div id="portfolioRoot"></div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section reveal">
+    <div id="pricingRoot"></div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why" class="section reveal">
+    <div id="whyRoot"></div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section reveal">
+    <div id="processRoot"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section reveal">
+    <div id="faqRoot"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section reveal">
+    <div class="contact">
+      <span class="contact-label">// старт</span>
+      <h2>Готовы выделиться?</h2>
+      <p>Оставьте заявку — соберём готовое сообщение в Telegram, останется нажать «Отправить».</p>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="cName">Как вас зовут</label>
+          <input id="cName" name="name" type="text" placeholder="Ваше имя" required />
+        </div>
+        <div class="field">
+          <label for="cContact">Telegram или телефон</label>
+          <input id="cContact" name="contact" type="text" placeholder="@username или +375..." />
+        </div>
+        <div class="field">
+          <label for="cMsg">О чём хотите поговорить</label>
+          <textarea id="cMsg" name="msg" rows="3" placeholder="Нужен лендинг для кофейни..." required></textarea>
+        </div>
+        <button class="btn btn-primary big full" type="submit">Отправить заявку</button>
+        <p class="form-note">Без бэкенда: форма готовит сообщение для @Tolikbopo в Telegram.</p>
+      </form>
+      <div class="contact-alt">или сразу в TG: <a href="https://t.me/Tolikbopo" target="_blank" rel="noopener">@Tolikbopo</a></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>© <span id="year"></span> NOCTIS — цифровая студия</span>
+    <span class="foot-links">
+      <a href="https://t.me/Tolikbopo" target="_blank" rel="noopener">Telegram</a>
+      <a href="#top">Наверх</a>
+      <a href="/admin.html" class="foot-admin" title="Панель управления (Ctrl + .)">панель</a>
+    </span>
+    <span>сделано с характером, не с шаблоном</span>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/main.js"></script>
+  <script>
+    /* ---------- Кастомный курсор + магнитные кнопки (декор, не ломает main.js) ---------- */
+    (function () {
+      var fine = window.matchMedia("(pointer:fine)").matches;
+      if (!fine) return;
+      document.body.classList.add("cur-on");
+      var dot = document.querySelector(".cursor-dot");
+      var ring = document.querySelector(".cursor-ring");
+      var rx = 0, ry = 0, mx = 0, my = 0;
+      document.addEventListener("mousemove", function (e) {
+        mx = e.clientX; my = e.clientY;
+        dot.style.transform = "translate(" + mx + "px," + my + "px)";
+      });
+      (function loop() {
+        rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+        ring.style.transform = "translate(" + rx + "px," + ry + "px)";
+        requestAnimationFrame(loop);
+      })();
+      var hover = "a, button, .card, .pf-card, details, .faq-item, .why";
+      document.querySelectorAll(hover).forEach(function (el) {
+        el.addEventListener("mouseenter", function () { document.body.classList.add("cur-hover"); });
+        el.addEventListener("mouseleave", function () { document.body.classList.remove("cur-hover"); });
+      });
+
+      // магнитные кнопки
+      document.querySelectorAll(".btn-primary").forEach(function (btn) {
+        btn.classList.add("magnetic");
+        btn.addEventListener("mousemove", function (e) {
+          var r = btn.getBoundingClientRect();
+          var x = e.clientX - r.left - r.width / 2;
+          var y = e.clientY - r.top - r.height / 2;
+          btn.style.transform = "translate(" + x * 0.25 + "px," + y * 0.35 + "px)";
+        });
+        btn.addEventListener("mouseleave", function () { btn.style.transform = ""; });
+      });
+    })();
+  </script>
+</body>
+</html>
